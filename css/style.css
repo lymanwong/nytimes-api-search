@@ -1,0 +1,57 @@
+/* Start Base */
+body {
+  background-color: #34495e !important;
+  padding-top: 5%; }
+
+/* End Base */
+/* Start Layout */
+/* End Layout */
+/* Start Module */
+.hero-title {
+  font-family: 'pirata One', cursive !important; }
+
+/* Thumbnail styling */
+.content .thumbnail {
+  height: 400px; }
+
+.overview-content .thumbnail {
+  height: 410px; }
+
+.thumbnail {
+  position: relative;
+  top: 0;
+  transition: top ease .6s !important; }
+
+.thumbnail > img {
+  max-width: 50% !important; }
+
+.thumbnail .overimg {
+  max-width: 25% !important; }
+
+.glyphicon-question-sign {
+  padding-left: 5px; }
+
+/* End Module */
+/* Start State */
+.thumbnail:hover {
+  border: 1.5px solid #c0392b !important;
+  top: -5px; }
+
+/* End State */
+/* Start Theme */
+/* End Theme */
+#background {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background: url(polina.jpg) no-repeat;
+  background-size: cover; }
+
+/*# sourceMappingURL=style.css.map */
