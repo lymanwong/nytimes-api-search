@@ -7,7 +7,7 @@
       // remove resultset if this has already been run
       $('.content div').remove();
       $('.table-content div').remove();
-      var url = "http://api.nytimes.com/svc/books/v3/lists/overview.jsonp?callback=foobar";
+      var url = "https://api.nytimes.com/svc/books/v3/lists/overview.jsonp?callback=foobar";
       url += '&' + $.param({
         'api-key': "API_KEY"
         });
