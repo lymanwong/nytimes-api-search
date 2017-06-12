@@ -7,13 +7,14 @@
       // remove resultset if this has already been run
       $('.content div').remove();
       $('.table-content div').remove();
-      var url = "https://api.nytimes.com/svc/books/v3/lists/overview.json";
-      url += '?' + $.param({
+      var url = "http://api.nytimes.com/svc/books/v3/lists/overview.jsonp?callback=foobar";
+      url += '&' + $.param({
         'api-key': "API_KEY"
         });
       $.ajax({
         url: url,
         method: 'GET',
+        dataType:'jsonp',
       })
       .done(function(result) {
           var data = result;
@@ -128,7 +129,7 @@
         method: 'GET',
       })
       .done(function(result) {
-          var data = result;
+        console.log(result);
           var items = [];
           $( "#count" ).html("<b style='color:blue;'>"+result.num_results+"</b> categories found. ");
           Object.keys(result).forEach(function(key,value){
