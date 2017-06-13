@@ -3,62 +3,139 @@
   $('.modal-author-hint,.modal-title-hint,.modal-publisher-hint,.modal-contributor-hint').slideUp();
 
 //Top 5 A-C Button
-  $('#over').on('click', function () {
-      // remove resultset if this has already been run
-      $('.content div').remove();
-      $('.table-content div').remove();
-      var url = "https://api.nytimes.com/svc/books/v3/lists/overview.jsonp?callback=foobar";
-      url += '&' + $.param({
-        'api-key': "API_KEY"
-        });
-      $.ajax({
-        url: url,
-        method: 'GET',
-        dataType:'jsonp',
-      })
-      .done(function(result) {
-          var data = result;
-          var items = [];
-          $( "#count" ).html("Showing top 5 for <b style='color:blue;'><span id='topcategory'></span></b>");
-          Object.keys(result).forEach(function(key,value){
-              if(key == "results"){
-                for(var i = 0; i<result[key].lists[1].books.length; i++) {
-                  var toprank =(result[key].lists[1].books[i].rank)
-                  var topranklw=(result[key].lists[1].books[i].rank_last_week)
-                  var topauthor =(result[key].lists[1].books[i].author);
-                  var toptitle=(result[key].lists[1].books[i].title);
-                  var topdescription=(result[key].lists[1].books[i].description);
-                  var toppublisher=(result[key].lists[1].books[i].publisher);
-                  var topbookimage=(result[key].lists[1].books[i].book_image);
-                  var topcontributor=(result[key].lists[1].books[i].contributor);
-                  var copyright = result.copyright;
-                  var topcategory = result[key].lists[1].list_name;
-                  var topbookurl = (result[key].lists[1].books[i].amazon_product_url);
-                  items.push(
+$('#over').on('click', function () {
+    // remove resultset if this has already been run
+    $('.content div').remove();
+    $('.table-content div').remove();
+    // var url = "https://api.nytimes.com/svc/books/v3/lists/overview.json";
+    // url += '?' + $.param({
+    // // Note: normally the key would be hidden
+    //   'api-key': "974e184c7cfd4c44904bfee8f625fef5"
+    //   });
+    // call to API
+    var url = "http://api.nytimes.com/svc/books/v3/lists/overview.jsonp?callback=foobar&api-key=974e184c7cfd4c44904bfee8f625fef5";
 
-                        '<div class="col-sm-6 col-md-4">'+
-                          '<div class="thumbnail">'+
-                            '<a href="'+topbookurl+'" target="_blank"><img class="overimg" src="'+topbookimage+'" alt="img/book.png"></a>'+
-                            '<div class="caption">'+
-                              '<h5><b>Title: </b>' + toptitle + '</h5>'+
-                              '<h5><b>Author: </b>' + topauthor + '</h5>'+
-                              '<p><b>Description: </b>' + topdescription + '</p>'+
-                              '<p><b>Publisher: </b>' + toppublisher + '</p>'+
-                              '<p><b>Current Rank: </b>' + toprank + '</p>'+
-                              '<p><b>Last Weeks Rank </b>' + topranklw+ '</p>'+
-                            '</div>'+
+    function createCORSRequest(method, url){
+        var xhr = new XMLHttpRequest();
+        if ("withCredentials" in xhr){
+            xhr.open(method, url, true);
+        } else if (typeof XDomainRequest != "undefined"){
+            xhr = new XDomainRequest();
+            xhr.open(method, url);
+        } else {
+            xhr = null;
+        }
+        return xhr;
+    }
+
+    var request = createCORSRequest("GET", url);
+    if (request){
+        request.onload = function(){
+          var f = new Function("foobar", request.responseText);
+          f(function(json){
+            console.log(json);
+          // })
+
+             // do something with request.responseText
+                var items = [];
+        $( "#count" ).html("Showing top 5 for <b style='color:blue;'><span id='topcategory'></span></b>");
+        Object.keys(json).forEach(function(key,value){
+            if(key == "results"){
+              for(var i = 0; i<json[key].lists[1].books.length; i++) {
+                var toprank =(json[key].lists[1].books[i].rank)
+                var topranklw=(json[key].lists[1].books[i].rank_last_week)
+                var topauthor =(json[key].lists[1].books[i].author);
+                var toptitle=(json[key].lists[1].books[i].title);
+                var topdescription=(json[key].lists[1].books[i].description);
+                var toppublisher=(json[key].lists[1].books[i].publisher);
+                var topbookimage=(json[key].lists[1].books[i].book_image);
+                var topcontributor=(json[key].lists[1].books[i].contributor);
+                // var copyright = json.copyright;
+                var topcategory = json[key].lists[1].list_name;
+                var topbookurl = (json[key].lists[1].books[i].amazon_product_url);
+                items.push(
+                      '<div class="col-sm-6 col-md-4">'+
+                        '<a href="'+topbookurl+'" target="_blank"><div class="thumbnail">'+
+                          '<img class="overimg" src="'+topbookimage+'" alt="img/book.png">'+
+                          '<div class="caption">'+
+                            '<h5><b>Title: </b>' + toptitle + '</h5>'+
+                            '<h5><b>Author: </b>' + topauthor + '</h5>'+
+                            '<p><b>Description: </b>' + topdescription + '</p>'+
+                            '<p><b>Publisher: </b>' + toppublisher + '</p>'+
+                            '<p><b>Current Rank: </b>' + toprank +'</p>'+
+                            '<p><b>Last Week\'s Rank: </b>' + topranklw+ '</p>'+
                           '</div>'+
-                        '</div>'
-                      )
-                  }
-                  $ul = $('<div class="row" />').appendTo('.content');
-                  $ul.append(items);
-              }
-          $('.panel-footer').html(copyright);
-          $('#topcategory').html(topcategory);
+                        '</div></a>'+
+                      '</div>'
+                    )
+                }
+                $ul = $('<div class="row" />').appendTo('.content');
+                $ul.append(items);
+            }
+        // $('.panel-footer').html(copyright);
+        $('#topcategory').html(topcategory);
+          });
         });
-      })
-  }); //close #abs click function
+      }
+      request.send();
+    }
+  });
+  // $('#over').on('click', function () {
+  //     // remove resultset if this has already been run
+  //     $('.content div').remove();
+  //     $('.table-content div').remove();
+  //     var url = "http://api.nytimes.com/svc/books/v3/lists/overview.jsonp?callback=foobar";
+  //     url += '&' + $.param({
+  //       'api-key': "API_KEY"
+  //       });
+  //     $.ajax({
+  //       url: url,
+  //       method: 'GET',
+  //       dataType:'jsonp',
+  //     })
+  //     .done(function(result) {
+  //         var data = result;
+  //         var items = [];
+  //         $( "#count" ).html("Showing top 5 for <b style='color:blue;'><span id='topcategory'></span></b>");
+  //         Object.keys(result).forEach(function(key,value){
+  //             if(key == "results"){
+  //               for(var i = 0; i<result[key].lists[1].books.length; i++) {
+  //                 var toprank =(result[key].lists[1].books[i].rank)
+  //                 var topranklw=(result[key].lists[1].books[i].rank_last_week)
+  //                 var topauthor =(result[key].lists[1].books[i].author);
+  //                 var toptitle=(result[key].lists[1].books[i].title);
+  //                 var topdescription=(result[key].lists[1].books[i].description);
+  //                 var toppublisher=(result[key].lists[1].books[i].publisher);
+  //                 var topbookimage=(result[key].lists[1].books[i].book_image);
+  //                 var topcontributor=(result[key].lists[1].books[i].contributor);
+  //                 var copyright = result.copyright;
+  //                 var topcategory = result[key].lists[1].list_name;
+  //                 var topbookurl = (result[key].lists[1].books[i].amazon_product_url);
+  //                 items.push(
+
+  //                       '<div class="col-sm-6 col-md-4">'+
+  //                         '<div class="thumbnail">'+
+  //                           '<a href="'+topbookurl+'" target="_blank"><img class="overimg" src="'+topbookimage+'" alt="img/book.png"></a>'+
+  //                           '<div class="caption">'+
+  //                             '<h5><b>Title: </b>' + toptitle + '</h5>'+
+  //                             '<h5><b>Author: </b>' + topauthor + '</h5>'+
+  //                             '<p><b>Description: </b>' + topdescription + '</p>'+
+  //                             '<p><b>Publisher: </b>' + toppublisher + '</p>'+
+  //                             '<p><b>Current Rank: </b>' + toprank + '</p>'+
+  //                             '<p><b>Last Weeks Rank </b>' + topranklw+ '</p>'+
+  //                           '</div>'+
+  //                         '</div>'+
+  //                       '</div>'
+  //                     )
+  //                 }
+  //                 $ul = $('<div class="row" />').appendTo('.content');
+  //                 $ul.append(items);
+  //             }
+  //         $('.panel-footer').html(copyright);
+  //         $('#topcategory').html(topcategory);
+  //       });
+  //     })
+  // }); //close #abs click function
 
 
 //Best-Seller List - View All Button
