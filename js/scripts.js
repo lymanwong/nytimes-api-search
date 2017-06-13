@@ -13,7 +13,7 @@ $('#over').on('click', function () {
     //   'api-key': "974e184c7cfd4c44904bfee8f625fef5"
     //   });
     // call to API
-    var url = "http://api.nytimes.com/svc/books/v3/lists/overview.jsonp?callback=foobar&api-key=974e184c7cfd4c44904bfee8f625fef5";
+    var url = "https://api.nytimes.com/svc/books/v3/lists/overview.jsonp?callback=foobar&api-key=974e184c7cfd4c44904bfee8f625fef5";
 
     function createCORSRequest(method, url){
         var xhr = new XMLHttpRequest();
