@@ -5,8 +5,8 @@
 </head>
 
 <body>
-    <video autoplay loop muted poster="https://www.dropbox.com/s/el58y5xdt6cjuxk/Tourists.jpg?dl=0" id="background">
-        <source src="https://www.dropbox.com/s/el58y5xdt6cjuxk/Tourists.jpg?dl=0" type="video/mp4">
+    <video autoplay loop muted poster="/img/tourists.jpg" id="background">
+        <source src="/img/tourists.mp4" type="video/mp4">
     </video>
 
   <div class="container">
