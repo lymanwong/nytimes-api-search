@@ -1,12 +1,31 @@
 /* Start Base */
 body {
-  background-color: #34495e !important;
-  padding-top: 5%; }
+  background-color: #34495e !important; }
 
 /* End Base */
 /* Start Layout */
 /* End Layout */
 /* Start Module */
+#background {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background: url(polina.jpg) no-repeat;
+  background-size: cover; }
+
+.container {
+  padding: 5% 0; }
+
+.container h1 {
+  color: white; }
+
 .hero-title {
   font-family: 'pirata One', cursive !important; }
 
@@ -37,21 +56,11 @@ body {
   border: 1.5px solid #c0392b !important;
   top: -5px; }
 
+a:hover {
+  text-decoration: none !important; }
+
 /* End State */
 /* Start Theme */
 /* End Theme */
-#background {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: -100;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
-  background: url(polina.jpg) no-repeat;
-  background-size: cover; }
 
 /*# sourceMappingURL=style.css.map */

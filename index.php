@@ -5,9 +5,17 @@
 </head>
 
 <body>
-  <!-- Hero container -->
+    <video autoplay loop muted poster="img/tourists.jpg" id="background">
+        <source src="img/tourists.mp4" type="video/mp4">
+    </video>
+
   <div class="container">
-    <?php include("include/hero.php") ?>
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Hero container -->
+        <?php include("include/hero.php") ?>
+      </div>
+    </div>
 
     <!-- Data display container -->
     <?php include("include/nytdata.php") ?>
