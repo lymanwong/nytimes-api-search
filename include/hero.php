@@ -4,7 +4,7 @@
       The New York Times
     </h1>
     <p>
-      Search for books using the NY Times API
+      Search for books using the NY Times Books <a href="https://developer.nytimes.com/books_api.json#" target="_blank">API</a>
     </p>
     <div class="row">
       <div class="col-sm-6 col-md-4">
