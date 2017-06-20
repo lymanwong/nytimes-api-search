@@ -20,13 +20,18 @@ $('#over').on('click', function () {
     // remove resultset if this has already been run
     $('.content div').remove();
     $('.table-content div').remove();
-    var url = "http://api.nytimes.com/svc/books/v3/lists/overview.jsonp?callback=foobar";
+    var url = "https://api.nytimes.com/svc/books/v3/lists/overview.jsonp?callback=foobar";
     url += '&' + $.param({
       'api-key': "API_KEY"
       });
     // call to API
 
-    var request = createCORSRequest("GET", url);
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, false);
+    xhr.send();
+    var request = xhr.responseText;
+    console.log(request);
+    // var request = createCORSRequest("GET", url);
     if (request){
       request.onload = function(){
           var f = new Function("foobar", request.responseText);
