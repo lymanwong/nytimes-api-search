@@ -1,5 +1,4 @@
 (function ($) {
-  //Modal tool tip hide
   function createCORSRequest(method, url) {
      var xhr = new XMLHttpRequest();
      if ("withCredentials" in xhr) {
@@ -21,6 +20,7 @@
      return xhr;
     }
 
+//Modal tool tip hide
 $('.modal-author-hint,.modal-title-hint,.modal-publisher-hint,.modal-contributor-hint').slideUp();
 
 //Top 5 A-C Button
@@ -32,6 +32,8 @@ $('#over').on('click', function () {
     url += '&' + $.param({
       'api-key': "API_KEY"
       });
+
+    console.log(url);
     // call to API
 
     var request = createCORSRequest("GET", url);
@@ -39,6 +41,9 @@ $('#over').on('click', function () {
       request.onload = function(){
           var f = new Function("foobar", request.responseText);
           f(function(json){
+
+            console.log(json);
+
           var items = [];
         $( "#count" ).html("Showing top 5 for <b style='color:blue;'><span id='topcategory'></span></b>");
         Object.keys(json).forEach(function(key,value){
