@@ -32,14 +32,13 @@ $('#over').on('click', function () {
     }
    // Response handlers.
    request.onload = function() {
-      // var text = request.responseText;
       console.log(request.responseText);
-      // request.onload = function(){
             var f = new Function("foobar", request.responseText);
-          //   f(function(json){
-          //   var items = [];
+            f(function(json){
+            var items = [];
           // $( "#count" ).html("Showing top 5 for <b style='color:blue;'><span id='topcategory'></span></b>");
-          // Object.keys(json).forEach(function(key,value){
+          Object.keys(json).forEach(function(key,value){
+            console.log(key);
           //     if(key == "results"){
           //       for(var i = 0; i<json[key].lists[1].books.length; i++) {
           //         var toprank =(json[key].lists[1].books[i].rank);
@@ -74,8 +73,8 @@ $('#over').on('click', function () {
           //       }
           //     $('.panel-footer').html(copyright);
           //     $('#topcategory').html(topcategory);
-          //   });
-          // });
+            });
+          });
         };
     // };
 
