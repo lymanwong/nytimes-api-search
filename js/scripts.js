@@ -38,7 +38,7 @@ $('#over').on('click', function () {
       var text = request.responseText;
       console.log(text);
       request.onload = function(){
-            var f = new Function("foobar", request.responseText);
+            var f = new Function("foobar", text);
             f(function(json){
             var items = [];
           $( "#count" ).html("Showing top 5 for <b style='color:blue;'><span id='topcategory'></span></b>");
