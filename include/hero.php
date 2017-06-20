@@ -104,9 +104,9 @@
 
       <div class="col-sm-6 col-md-4">
         <h4>Best-Seller List</h4>
-        <button type="button" id="abs" class="btn btn-primary" data-toggle="modal" data-target="" data-whatever="">View All</button>
+<!--         <button type="button" id="abs" class="btn btn-primary" data-toggle="modal" data-target="" data-whatever="">View All</button> -->
 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="">Custom Search</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever=""> Search</button>
       </div>
       <div class="col-sm-6 col-md-4">
         <h4>Category Names</h4>
