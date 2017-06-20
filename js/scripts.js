@@ -29,8 +29,8 @@ $('#over').on('click', function () {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url, false);
     xhr.send();
-    var request = xhr.responseText;
-    console.log(request);
+    xhr.responseText;
+    console.log(xhr.responseText);
     // var request = createCORSRequest("GET", url);
     if (request){
       request.onload = function(){
