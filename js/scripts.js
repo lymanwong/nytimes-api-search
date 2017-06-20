@@ -25,20 +25,17 @@ $('#over').on('click', function () {
       'api-key': "974e184c7cfd4c44904bfee8f625fef5"
       });
     // call to API
-
     var request = createCORSRequest("GET", url);
-
     if (!request) {
       alert('CORS not supported');
       return;
    }
-
    // Response handlers.
    request.onload = function() {
-      var text = request.responseText;
-      console.log(text);
-      request.onload = function(){
-            var f = new Function("foobar", text);
+      // var text = request.responseText;
+      console.log(request.responseText);
+      // request.onload = function(){
+            var f = new Function("foobar", request.responseText);
             f(function(json){
             var items = [];
           $( "#count" ).html("Showing top 5 for <b style='color:blue;'><span id='topcategory'></span></b>");
