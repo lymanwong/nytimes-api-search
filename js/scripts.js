@@ -269,6 +269,7 @@ $('#test').click(function(){
            alert("error");
        }
    });
+  });
 
   //Modal tool tip show/hide
   $('#author').mouseover(function(){
