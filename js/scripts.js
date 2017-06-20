@@ -26,18 +26,7 @@ $('#over').on('click', function () {
       });
     // call to API
 
-    var request = function createCORSRequest(method, url){
-      var xhr = new XMLHttpRequest();
-      if ("withCredentials" in xhr){
-          xhr.open(method, url, true);
-      } else if (typeof XDomainRequest != "undefined"){
-          xhr = new XDomainRequest();
-          xhr.open(method, url);
-      } else {
-          xhr = null;
-      }
-      return xhr;
-    }
+    var request = createCORSRequest("GET", url);
     if (request){
       request.onload = function(){
           var f = new Function("foobar", request.responseText);

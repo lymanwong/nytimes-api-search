@@ -5,9 +5,9 @@
 </head>
 
 <body>
-<!--   <video autoplay loop muted poster="http://lymanwong.com/images/Tourists.jpg" id="background">
+  <video autoplay loop muted poster="http://lymanwong.com/images/Tourists.jpg" id="background">
       <source src="http://lymanwong.com/images/Tourists.mp4" type="video/mp4">
-  </video> -->
+  </video>
 
   <div class="container">
     <div class="row">
