@@ -24,68 +24,67 @@
 $('.modal-author-hint,.modal-title-hint,.modal-publisher-hint,.modal-contributor-hint').slideUp();
 
 //Top 5 A-C Button
-$('#over').on('click', function () {
-    // remove resultset if this has already been run
-    $('.content div').remove();
-    $('.table-content div').remove();
-    var url = "https://api.nytimes.com/svc/books/v3/lists/overview.jsonp?callback=foobar";
-    url += '&' + $.param({
-      'api-key': "API_KEY"
+//Overview - View All Button
+  $('#over').on('click', function () {
+      // remove resultset if this has already been run
+      $('.content div').remove();
+      $('.table-content div').remove();
+      var url = "http://api.nytimes.com/svc/books/v3/lists/overview.jsonp?callback=foobar";
+      url += '&' + $.param({
+        'api-key': API_KEY
       });
+      var request = createCORSRequest("GET", url);
 
-    console.log(url);
-    // call to API
-
-    var request = createCORSRequest("GET", url);
-    if (request){
-      request.onload = function(){
-          var f = new Function("foobar", request.responseText);
-          f(function(json){
-
-            console.log(json);
-
-          var items = [];
-        $( "#count" ).html("Showing top 5 for <b style='color:blue;'><span id='topcategory'></span></b>");
-        Object.keys(json).forEach(function(key,value){
-            if(key == "results"){
-              for(var i = 0; i<json[key].lists[1].books.length; i++) {
-                var toprank =(json[key].lists[1].books[i].rank)
-                var topranklw=(json[key].lists[1].books[i].rank_last_week)
-                var topauthor =(json[key].lists[1].books[i].author);
-                var toptitle=(json[key].lists[1].books[i].title);
-                var topdescription=(json[key].lists[1].books[i].description);
-                var toppublisher=(json[key].lists[1].books[i].publisher);
-                var topbookimage=(json[key].lists[1].books[i].book_image);
-                var topcontributor=(json[key].lists[1].books[i].contributor);
-                var copyright = json.copyright;
-                var topcategory = json[key].lists[1].list_name;
-                var topbookurl = (json[key].lists[1].books[i].amazon_product_url);
-                items.push(
-                      '<div class="col-sm-6 col-md-4">'+
-                        '<a href="'+topbookurl+'" target="_blank"><div class="thumbnail">'+
-                          '<img class="overimg" src="'+topbookimage+'" alt="img/book.png">'+
-                          '<div class="caption">'+
-                            '<h5><b>Title: </b>' + toptitle + '</h5>'+
-                            '<h5><b>Author: </b>' + topauthor + '</h5>'+
-                            '<p><b>Description: </b>' + topdescription + '</p>'+
-                            '<p><b>Publisher: </b>' + toppublisher + '</p>'+
-                            '<p><b>Current Rank: </b>' + toprank +'</p>'+
-                            '<p><b>Last Week\'s Rank: </b>' + topranklw+ '</p>'+
-                          '</div>'+
-                        '</div></a>'+
-                      '</div>'
-                    )
-                }
-                $ul = $('<div class="row" />').appendTo('.content');
-                $ul.append(items);
-              }
-            $('.panel-footer').html(copyright);
-            $('#topcategory').html(topcategory);
-          });
-        });
+      if (!request){
+        throw new Error('Cors not supported')
       }
-      request.send();
-    }
+      elseif (request){
+          request.onload = function(){
+            var f = new Function("foobar", request.responseText);
+            f(function(json){
+              console.log(json);
+              var items = [];
+          $( "#count" ).html("Showing top 5 for <b style='color:blue;'><span id='topcategory'></span></b>");
+          Object.keys(json).forEach(function(key,value){
+              if(key == "results"){
+                for(var i = 0; i<json[key].lists[1].books.length; i++) {
+                  var toprank =(json[key].lists[1].books[i].rank)
+                  var topranklw=(json[key].lists[1].books[i].rank_last_week)
+                  var topauthor =(json[key].lists[1].books[i].author);
+                  var toptitle=(json[key].lists[1].books[i].title);
+                  var topdescription=(json[key].lists[1].books[i].description);
+                  var toppublisher=(json[key].lists[1].books[i].publisher);
+                  var topbookimage=(json[key].lists[1].books[i].book_image);
+                  var topcontributor=(json[key].lists[1].books[i].contributor);
+                  var copyright = json.copyright;
+                  var topcategory = json[key].lists[1].list_name;
+                  var topbookurl = (json[key].lists[1].books[i].amazon_product_url);
+                  items.push(
+                        '<div class="col-sm-6 col-md-4">'+
+                          '<a href="'+topbookurl+'" target="_blank"><div class="thumbnail">'+
+                            '<img class="overimg" src="'+topbookimage+'" alt="img/book.png">'+
+                            '<div class="caption">'+
+                              '<h5><b>Title: </b>' + toptitle + '</h5>'+
+                              '<h5><b>Author: </b>' + topauthor + '</h5>'+
+                              '<p><b>Description: </b>' + topdescription + '</p>'+
+                              '<p><b>Publisher: </b>' + toppublisher + '</p>'+
+                              '<p><b>Current Rank: </b>' + toprank +'</p>'+
+                              '<p><b>Last Week\'s Rank: </b>' + topranklw+ '</p>'+
+                            '</div>'+
+                          '</div></a>'+
+                        '</div>'
+                      )
+                  }
+                  $ul = $('<div class="row" />').appendTo('.content');
+                  $ul.append(items);
+              }
+          $('.panel-footer').html(copyright);
+          $('#topcategory').html(topcategory);
+            });
+          });
+          }
+          request.send();
+      }
   });
 
 //Best-Seller List - View All Button
@@ -95,14 +94,10 @@ $('#over').on('click', function () {
       $('.table-content div').remove();
       var url = "https://api.nytimes.com/svc/books/v3/lists.jsonp?callback=foobar";
       url += '&' + $.param({
-        'api-key': "API_KEY"
+        'api-key': API_KEY
         });
-      // $.ajax({
-      //   url: url,
-      //   method: 'GET',
-      // })
-      // .done(function(result) {
-      //     var data = result;
+      alert('hi');
+      console.log(url);
       var request = createCORSRequest("GET", url);
         if (request){
           request.onload = function(){
@@ -110,7 +105,7 @@ $('#over').on('click', function () {
             f(function(json){
           var items = [];
           $( "#count" ).html("<b style='color:blue;'>"+result.num_results+"</b> books found. ");
-          $( "#face").html(":P");
+          // $( "#face").html(":P");
           Object.keys(json).forEach(function(key,value){
               if(key == "jsons"){
                   for(var i = 0; i<json[key].length; i++)
@@ -156,7 +151,7 @@ $('#over').on('click', function () {
       $('.table-content div').remove();
       var url = "https://api.nytimes.com/svc/books/v3/lists/names.jsop?callback=foobar";
       url += '&' + $.param({
-        'api-key': "API_KEY"
+        'api-key': API_KEY
       });
       // $.ajax({
       //   url: url,
@@ -212,7 +207,7 @@ $("button#submit").click(function(){
   var str = $("form").serialize();
   var url = "https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.jsonp?callback=foobar";
   url += '&' + $.param({
-  'api-key': "API_KEY"
+  'api-key': API_KEY
   })+"&"+str;
     // $.ajax({
     //   url: url,
