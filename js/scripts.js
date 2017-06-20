@@ -26,12 +26,18 @@ $('#over').on('click', function () {
       });
     // call to API
 
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', url, false);
-    xhr.send();
-    xhr.responseText;
-    console.log(xhr.responseText);
-    // var request = createCORSRequest("GET", url);
+    var request = function createCORSRequest(method, url){
+      var xhr = new XMLHttpRequest();
+      if ("withCredentials" in xhr){
+          xhr.open(method, url, true);
+      } else if (typeof XDomainRequest != "undefined"){
+          xhr = new XDomainRequest();
+          xhr.open(method, url);
+      } else {
+          xhr = null;
+      }
+      return xhr;
+    }
     if (request){
       request.onload = function(){
           var f = new Function("foobar", request.responseText);
