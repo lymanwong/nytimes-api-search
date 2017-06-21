@@ -87,7 +87,7 @@
     $('.content div').remove();
     $('.table-content div').remove();
     var url = "https://api.nytimes.com/svc/books/v3/lists.jsonp?callback=foobar";
-    url += '&' + $.param({
+    url += '?' + $.param({
       'api-key': "974e184c7cfd4c44904bfee8f625fef5"
     });
 
@@ -147,7 +147,7 @@
     $('.content div').remove();
     $('.table-content div').remove();
     var url = "https://api.nytimes.com/svc/books/v3/lists/names.jsop?callback=foobar";
-    url += '&' + $.param({
+    url += '?' + $.param({
       'api-key': "974e184c7cfd4c44904bfee8f625fef5"
     });
 
