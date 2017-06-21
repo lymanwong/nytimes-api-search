@@ -220,10 +220,10 @@
       var f = new Function("foobar", request.responseText);
       f(function(json){
       var items = [];
-        $( "#count" ).html("<b style='color:blue;'>"+result.num_results+"</b> books found. ");
+        $( "#count" ).html("<b style='color:blue;'>"+json.num_results+"</b> books found. ");
         Object.keys(json).forEach(function(key,value){
           if(key == "results"){
-            for(var i = 0; i<result[key].length; i++){
+            for(var i = 0; i<json[key].length; i++){
               var title = (json[key][i].title);
               var author = (json[key][i].author);
               var description = (json[key][i].description);
