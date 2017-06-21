@@ -162,7 +162,7 @@
       var f = new Function("foobar", request.responseText);
       f(function(json){
         var items = [];
-        $( "#count" ).html("<b style='color:blue;'>"+result.num_results+"</b> categories found. ");
+        $( "#count" ).html("<b style='color:blue;'>"+results.num_results+"</b> categories found. ");
         Object.keys(json).forEach(function(key,value){
           if(key == "results"){
             for(var i = 0; i<json[key].length; i++){
