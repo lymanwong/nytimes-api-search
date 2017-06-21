@@ -31,58 +31,57 @@ $('#over').on('click', function () {
       return;
     }
    // Response handlers.
-   request.onload = function() {
-      console.log(request.responseText);
-            var f = new Function("foobar", request.responseText);
-            f(function(json){
-            var items = [];
-          // $( "#count" ).html("Showing top 5 for <b style='color:blue;'><span id='topcategory'></span></b>");
-          Object.keys(json).forEach(function(key,value){
-            console.log(key);
-          //     if(key == "results"){
-          //       for(var i = 0; i<json[key].lists[1].books.length; i++) {
-          //         var toprank =(json[key].lists[1].books[i].rank);
-          //         var topranklw=(json[key].lists[1].books[i].rank_last_week);
-          //         var topauthor =(json[key].lists[1].books[i].author);
-          //         var toptitle=(json[key].lists[1].books[i].title);
-          //         var topdescription=(json[key].lists[1].books[i].description);
-          //         var toppublisher=(json[key].lists[1].books[i].publisher);
-          //         var topbookimage=(json[key].lists[1].books[i].book_image);
-          //         var topcontributor=(json[key].lists[1].books[i].contributor);
-          //         var copyright = json.copyright;
-          //         var topcategory = json[key].lists[1].list_name;
-          //         var topbookurl = (json[key].lists[1].books[i].amazon_product_url);
-          //         items.push(
-          //               '<div class="col-sm-6 col-md-4">'+
-          //                 '<a href="'+topbookurl+'" target="_blank"><div class="thumbnail">'+
-          //                   '<img class="overimg" src="'+topbookimage+'" alt="img/book.png">'+
-          //                   '<div class="caption">'+
-          //                     '<h5><b>Title: </b>' + toptitle + '</h5>'+
-          //                     '<h5><b>Author: </b>' + topauthor + '</h5>'+
-          //                     '<p><b>Description: </b>' + topdescription + '</p>'+
-          //                     '<p><b>Publisher: </b>' + toppublisher + '</p>'+
-          //                     '<p><b>Current Rank: </b>' + toprank +'</p>'+
-          //                     '<p><b>Last Week\'s Rank: </b>' + topranklw+ '</p>'+
-          //                   '</div>'+
-          //                 '</div></a>'+
-          //               '</div>'
-          //             );
-          //         }
-          //         $ul = $('<div class="row" />').appendTo('.content');
-          //         $ul.append(items);
-          //       }
-          //     $('.panel-footer').html(copyright);
-          //     $('#topcategory').html(topcategory);
-            });
-          });
-        };
-    // };
+    request.onload = function() {
+      // console.log(request.responseText);
+      var f = new Function("foobar", request.responseText);
+      f(function(json){
+      var items = [];
+      // $( "#count" ).html("Showing top 5 for <b style='color:blue;'><span id='topcategory'></span></b>");
+      Object.keys(json).forEach(function(key,value){
+        console.log(key);
+      //     if(key == "results"){
+      //       for(var i = 0; i<json[key].lists[1].books.length; i++) {
+      //         var toprank =(json[key].lists[1].books[i].rank);
+      //         var topranklw=(json[key].lists[1].books[i].rank_last_week);
+      //         var topauthor =(json[key].lists[1].books[i].author);
+      //         var toptitle=(json[key].lists[1].books[i].title);
+      //         var topdescription=(json[key].lists[1].books[i].description);
+      //         var toppublisher=(json[key].lists[1].books[i].publisher);
+      //         var topbookimage=(json[key].lists[1].books[i].book_image);
+      //         var topcontributor=(json[key].lists[1].books[i].contributor);
+      //         var copyright = json.copyright;
+      //         var topcategory = json[key].lists[1].list_name;
+      //         var topbookurl = (json[key].lists[1].books[i].amazon_product_url);
+      //         items.push(
+      //               '<div class="col-sm-6 col-md-4">'+
+      //                 '<a href="'+topbookurl+'" target="_blank"><div class="thumbnail">'+
+      //                   '<img class="overimg" src="'+topbookimage+'" alt="img/book.png">'+
+      //                   '<div class="caption">'+
+      //                     '<h5><b>Title: </b>' + toptitle + '</h5>'+
+      //                     '<h5><b>Author: </b>' + topauthor + '</h5>'+
+      //                     '<p><b>Description: </b>' + topdescription + '</p>'+
+      //                     '<p><b>Publisher: </b>' + toppublisher + '</p>'+
+      //                     '<p><b>Current Rank: </b>' + toprank +'</p>'+
+      //                     '<p><b>Last Week\'s Rank: </b>' + topranklw+ '</p>'+
+      //                   '</div>'+
+      //                 '</div></a>'+
+      //               '</div>'
+      //             );
+      //         }
+      //         $ul = $('<div class="row" />').appendTo('.content');
+      //         $ul.append(items);
+      //       }
+      //     $('.panel-footer').html(copyright);
+      //     $('#topcategory').html(topcategory);
+        });
+      });
+    };
 
     request.onerror = function() {
       alert('Woops, there was an error making the request.');
     };
     request.send();
-
+  });
 
     // if (request){
     //   request.onload = function(){
@@ -130,7 +129,7 @@ $('#over').on('click', function () {
     //   };
     //   request.send();
     // }
-  });
+  // });
 
 //Best-Seller List - View All Button
   $('#abs').on('click', function () {
