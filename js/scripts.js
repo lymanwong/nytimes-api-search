@@ -134,6 +134,9 @@
         });
       });
     };
+    request.onerror = function() {
+      alert('Woops, there was an error making the request.');
+    };
     request.send();
   }); //close #abs click function
 
@@ -190,6 +193,9 @@
         });
       });
     };
+    request.onerror = function() {
+      alert('Woops, there was an error making the request.');
+    };
     request.send();
   }); //close #abs click function
 
@@ -201,7 +207,7 @@
     var url = "https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.jsonp?callback=foobar";
     url += '&' + $.param({
       'api-key': "974e184c7cfd4c44904bfee8f625fef5"
-    });
+    })+"&"+str;
 
     // call to API
     var request = createCORSRequest("GET", url);
@@ -241,6 +247,9 @@
           $('.panel-footer').html(copyright);
         });
       });
+    };
+    request.onerror = function() {
+      alert('Woops, there was an error making the request.');
     };
     request.send();
   }); //close #abs click function
