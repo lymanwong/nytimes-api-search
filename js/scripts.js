@@ -205,7 +205,7 @@
     $('.table-content div').remove();
     var str = $("form").serialize();
     var url = "https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.jsonp?callback=foobar";
-    url += '&' + $.param({
+    url += '?' + $.param({
       'api-key': "974e184c7cfd4c44904bfee8f625fef5"
     })+"&"+str;
 
