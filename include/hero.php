@@ -27,6 +27,7 @@
             <li><a id="">Childrens Middle Grade Hardcover</a></li>
             <li><a id="">Childrens Middle Grade Paperback</a></li>
             <li><a id="">Combined Print and E-Book Fiction</a></li>
+            <!-- <li><a id="over">Combined Print and E-Book Nonfiction</a></li> -->
             <li><a id="">Combined Print Fiction</a></li>
             <li><a id="">Combined Print Nonfiction</a></li>
             <li><a id="">Crime and Punishment</a></li>
@@ -106,8 +107,9 @@
         <h4>Best-Seller List</h4>
 <!--         <button type="button" id="abs" class="btn btn-primary" data-toggle="modal" data-target="" data-whatever="">View All</button> -->
 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="">Custom Search</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="" id="best-search-btn">Custom Search</button>
       </div>
+
       <div class="col-sm-6 col-md-4">
         <h4>Category Names</h4>
         <button type="button" id="names" class="btn btn-primary" data-toggle="modal" data-target="" data-whatever="">View All</button>
@@ -117,7 +119,7 @@
     <div class="row">
       <div class="col-sm-6 col-md-4">
         <h4>Reviews</h4>
-        <button type="button" id="test" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="" id="test">Coming Soon</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="" id="test">Coming Soon</button>
       </div>
     </div>
   </div>

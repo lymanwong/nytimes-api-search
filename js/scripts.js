@@ -259,7 +259,7 @@
   }); //close #abs click function
 
   $('#test').click(function(){
-    // $('#best-search').hide();
+    $('#best-search').hide();
     $("#reviews").show();
     $('.content div').remove();
     $('.table-content div').remove();
@@ -287,7 +287,8 @@
   });
 
   //Best-Seller Custom Search Button > Modal > tool tip
-  $('#exampleModal').click(function(){
+  $('#best-search-btn').click(function(){
+    $("#reviews").hide();
     $('#best-search').show();
     $('#author').mouseover(function(){
       $('.modal-author-hint').slideDown('slow');
