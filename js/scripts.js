@@ -258,25 +258,56 @@
     request.send();
   }); //close #abs click function
 
-  //Modal tool tip show/hide
-  $('#author').mouseover(function(){
-    $('.modal-author-hint').slideDown('slow');
-  }).mouseout(function(){
-    $('.modal-author-hint').slideUp('slow');
+  $('#test').click(function(){
+    // $('#best-search').hide();
+    $("#reviews").show();
+    $('.content div').remove();
+    $('.table-content div').remove();
+
+    var url = "https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json";
+    url += '?' + $.param({
+    // Note: normally the key would be hidden
+    'api-key': "974e184c7cfd4c44904bfee8f625fef5"
+    })
+    $.ajax({
+         url: "http://api.nytimes.com/svc/books/v3/lists/overview.jsonp?callback=foobar&api-key=974e184c7cfd4c44904bfee8f625fef5",
+         type: "GET",
+         crossDomain: true,
+         // data: JSON.stringify(somejson),
+         dataType: "jsonp",
+         success: function (response) {
+             // var resp = JSON.parse(response)
+             // alert(resp.status);
+             console.log(response);
+         },
+         error: function (xhr, status) {
+             alert("error");
+         }
+     });
   });
-    $('#title').mouseover(function(){
-    $('.modal-title-hint').slideDown('slow');
-  }).mouseout(function(){
-    $('.modal-title-hint').slideUp('slow');
-  });
-    $('#contributor').mouseover(function(){
-    $('.modal-contributor-hint').slideDown('slow');
-  }).mouseout(function(){
-    $('.modal-contributor-hint').slideUp('slow');
-  });
-    $('#publisher').mouseover(function(){
-    $('.modal-publisher-hint').slideDown('slow');
-  }).mouseout(function(){
-    $('.modal-publisher-hint').slideUp('slow');
+
+  //Best-Seller Custom Search Button > Modal > tool tip
+  $('#exampleModal').click(function(){
+    $('.best-search').show();
+    $('#author').mouseover(function(){
+      $('.modal-author-hint').slideDown('slow');
+    }).mouseout(function(){
+      $('.modal-author-hint').slideUp('slow');
+    });
+      $('#title').mouseover(function(){
+      $('.modal-title-hint').slideDown('slow');
+    }).mouseout(function(){
+      $('.modal-title-hint').slideUp('slow');
+    });
+      $('#contributor').mouseover(function(){
+      $('.modal-contributor-hint').slideDown('slow');
+    }).mouseout(function(){
+      $('.modal-contributor-hint').slideUp('slow');
+    });
+      $('#publisher').mouseover(function(){
+      $('.modal-publisher-hint').slideDown('slow');
+    }).mouseout(function(){
+      $('.modal-publisher-hint').slideUp('slow');
+    });
   });
 }(jQuery));

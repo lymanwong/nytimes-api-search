@@ -113,10 +113,11 @@
         <button type="button" id="names" class="btn btn-primary" data-toggle="modal" data-target="" data-whatever="">View All</button>
       </div>
     </div>
+
     <div class="row">
       <div class="col-sm-6 col-md-4">
         <h4>Reviews</h4>
-        <button type="button" id="test" class="btn btn-primary" data-toggle="modal" data-target="" data-whatever="">Coming Soon</button>
+        <button type="button" id="test" class="btn btn-primary" data-toggle="modal" data-target="" data-whatever="" id="test">Coming Soon</button>
       </div>
     </div>
   </div>
