@@ -1,5 +1,9 @@
 (function ($) {
   //Modal tool tip hide
+  $('.modal-author-hint,.modal-title-hint,.modal-publisher-hint,.modal-contributor-hint').slideUp();
+  $("#reviews").hide();
+  $("#best-search").hide();
+
   function createCORSRequest(method, url){
     var xhr = new XMLHttpRequest();
       if ("withCredentials" in xhr){
