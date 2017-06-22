@@ -288,7 +288,7 @@
 
   //Best-Seller Custom Search Button > Modal > tool tip
   $('#exampleModal').click(function(){
-    $('.best-search').show();
+    $('#best-search').show();
     $('#author').mouseover(function(){
       $('.modal-author-hint').slideDown('slow');
     }).mouseout(function(){
