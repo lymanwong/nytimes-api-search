@@ -258,7 +258,7 @@
     request.send();
   }); //close #abs click function
 
-  $('#test').click(function(){
+  $('#reviews-btn').click(function(){
     $('#best-search').hide();
     $("#reviews").show();
     $('.content div').remove();

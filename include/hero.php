@@ -119,7 +119,7 @@
     <div class="row">
       <div class="col-sm-6 col-md-4">
         <h4>Reviews</h4>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="" id="test">Coming Soon</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="" id="reviews-btn">Coming Soon</button>
       </div>
     </div>
   </div>
