@@ -27,7 +27,7 @@
     $('#count').html("Pending search results...");
     var url = "https://api.nytimes.com/svc/books/v3/lists/overview.jsonp?callback=foobar";
     url += '&' + $.param({
-      'api-key': "974e184c7cfd4c44904bfee8f625fef5"
+      'api-key': "API_KEY"
     });
     // call to API
     var request = createCORSRequest("GET", url);
@@ -93,7 +93,7 @@
     $('#count').html("Pending search results...");
     var url = "https://api.nytimes.com/svc/books/v3/lists.jsonp?callback=foobar";
     url += '?' + $.param({
-      'api-key': "974e184c7cfd4c44904bfee8f625fef5"
+      'api-key': "API_KEY"
     });
 
     // call to API
@@ -153,7 +153,7 @@
     $('.table-content tr').remove();
     var url = "https://api.nytimes.com/svc/books/v3/lists/names.jsonp?callback=foobar";
     url += '&' + $.param({
-      'api-key': "974e184c7cfd4c44904bfee8f625fef5"
+      'api-key': "API_KEY"
     });
 
     // call to API
@@ -214,7 +214,7 @@
     }).serialize();
     var url = "https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json";
     url += '?'+ str + '&' + $.param({
-      'api-key': "974e184c7cfd4c44904bfee8f625fef5"
+      'api-key': "API_KEY"
     });
     $.ajax({
       url: url,
@@ -320,7 +320,7 @@
     var url = "https://api.nytimes.com/svc/books/v3/reviews.jsonp?callback=foobar";
     url += '&' + str + '&' + $.param({
     // Note: normally the key would be hidden
-    'api-key': "974e184c7cfd4c44904bfee8f625fef5"
+    'api-key': "API_KEY"
     })
     var request = createCORSRequest("GET", url);
     if (!request) {
