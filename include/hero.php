@@ -1,11 +1,28 @@
 <div class="jumbotron">
   <div class="container">
     <h1 class="hero-title">
-      The New York Times
+      Search The New York Times Library
     </h1>
     <p>
       Search for books using the NY Times Books <a href="https://developer.nytimes.com/books_api.json#" target="_blank">API</a>
     </p>
+    <div class="row">
+      <div class="col-sm-6 col-md-4">
+        <h4>Best-Seller List</h4>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="" id="best-search-btn">Custom Search</button>
+      </div>
+
+      <div class="col-sm-6 col-md-4">
+        <h4>Book Reviews</h4>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="" id="reviews-btn">Custom Search</button>
+      </div>
+
+      <div class="col-sm-6 col-md-4">
+        <h4>Category Names</h4>
+        <button type="button" id="names" class="btn btn-primary" data-toggle="modal" data-target="" data-whatever="">View All</button>
+      </div>
+    </div>
+
     <div class="row">
       <div class="col-sm-6 col-md-4">
         <h4>Top 5 Best-Sellers</h4>
@@ -27,7 +44,7 @@
             <li><a id="">Childrens Middle Grade Hardcover</a></li>
             <li><a id="">Childrens Middle Grade Paperback</a></li>
             <li><a id="">Combined Print and E-Book Fiction</a></li>
-            <!-- <li><a id="over">Combined Print and E-Book Nonfiction</a></li> -->
+            <li><a id="over">Combined Print and E-Book Nonfiction</a></li>
             <li><a id="">Combined Print Fiction</a></li>
             <li><a id="">Combined Print Nonfiction</a></li>
             <li><a id="">Crime and Punishment</a></li>
@@ -101,25 +118,6 @@
             <li><a id="">Young Adult Paperback</a></li>
           </ul>
         </div>
-      </div>
-
-      <div class="col-sm-6 col-md-4">
-        <h4>Best-Seller List</h4>
-<!--         <button type="button" id="abs" class="btn btn-primary" data-toggle="modal" data-target="" data-whatever="">View All</button> -->
-
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="" id="best-search-btn">Custom Search</button>
-      </div>
-
-      <div class="col-sm-6 col-md-4">
-        <h4>Category Names</h4>
-        <button type="button" id="names" class="btn btn-primary" data-toggle="modal" data-target="" data-whatever="">View All</button>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-6 col-md-4">
-        <h4>Reviews</h4>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="" id="reviews-btn">Coming Soon</button>
       </div>
     </div>
   </div>

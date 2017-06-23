@@ -288,6 +288,7 @@
 
   //Reviews search button action
   $('#reviews-btn').click(function(){
+    $('#count').html("Pending search results...");
     $('#best-search').hide();
     $("#reviews").show();
     $('.content div').remove();
