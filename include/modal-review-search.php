@@ -16,8 +16,8 @@
       <p >The title of the best seller</p><br>
     </span>
     <div class="form-group">
-      <label for="publisher" class="control-label">Author:</label><span class="glyphicon glyphicon-question-sign" aria-hidden="true" id="author2"></span>
-      <input type="text" class="form-control" id="publisher" name="publisher" placeholder="Danielle Steel">
+      <label for="author" class="control-label">Author:</label><span class="glyphicon glyphicon-question-sign" aria-hidden="true" id="author2"></span>
+      <input type="text" class="form-control" id="author" name="author" placeholder="Danielle Steel">
     </div>
     <span class="modal-author2-hint">
       <p>The author of the book.</p><br>
