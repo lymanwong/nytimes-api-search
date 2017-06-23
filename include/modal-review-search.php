@@ -17,7 +17,7 @@
     </span>
     <div class="form-group">
       <label for="publisher" class="control-label">Author:</label><span class="glyphicon glyphicon-question-sign" aria-hidden="true" id="author2"></span>
-      <input type="text" class="form-control" id="publisher" name="publisher" placeholder="Shell Silverstein">
+      <input type="text" class="form-control" id="publisher" name="publisher" placeholder="Danielle Steel">
     </div>
     <span class="modal-author2-hint">
       <p>The author of the book.</p><br>
@@ -27,6 +27,6 @@
 
 <div class="modal-footer">
   <button type="button" class="btn btn-default" data-dismiss="modal" id="dismiss-review">Close</button>
-  <button type="button" class="btn btn-primary" id="review-submit">Submit</button>
+  <button type="button" class="btn btn-primary" id="review-submit-btn">Submit</button>
 </div>
 </span>
