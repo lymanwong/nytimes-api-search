@@ -5,6 +5,10 @@
 </head>
 
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TNQRXJ2"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <video autoplay loop muted poster="http://lymanwong.com/images/Tourists.jpg" id="background">
       <source src="http://lymanwong.com/images/Tourists.mp4" type="video/mp4">
   </video>
