@@ -209,6 +209,7 @@
     $('.table-content div').remove();
     var str = $("form input").filter(function () {
         return !!this.value;
+    }).serialize();
     var url = "https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json";
     url += '?'+ str + '&' + $.param({
       'api-key': "974e184c7cfd4c44904bfee8f625fef5"
