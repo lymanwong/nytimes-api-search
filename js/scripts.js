@@ -349,9 +349,9 @@
                     '<div class="caption">'+
                       '<h5><b>Title: </b>' + title + '</h5>'+
                       '<h5><b>Author: </b>' + author + '</h5>'+
-                      '<p><b>Description: </b>' + pub_date + '</p>'+
-                      '<p><b>Publisher: </b>' + byline + '</p>'+
-                      '<p><b>Contributor: </b>' + isbn + '</p>'+
+                      '<p><b>Publish Date: </b>' + pub_date + '</p>'+
+                      '<p><b>Byline: </b>' + byline + '</p>'+
+                      '<p><b>ISBN: </b>' + isbn + '</p>'+
                     '</div>'+
                   '</div></a>'+
                 '</div>'
