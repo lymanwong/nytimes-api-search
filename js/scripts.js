@@ -152,7 +152,6 @@
     // remove resultset if this has already been run
     $('.content div').remove();
     $('.table-content div').remove();
-    $('#count').html("Pending search results...");
     var url = "https://api.nytimes.com/svc/books/v3/lists/names.jsonp?callback=foobar";
     url += '&' + $.param({
       'api-key': "974e184c7cfd4c44904bfee8f625fef5"
@@ -225,7 +224,6 @@
     })
     .done(function(result) {
       $('#exampleModal').modal('hide');
-      var data = result;
       var items = [];
       $( "#count" ).html("<b style='color:blue;'>"+result.num_results+"</b> books found. ");
       Object.keys(result).forEach(function(key,value){
@@ -265,7 +263,6 @@
     $("#reviews").show();
     $('.content div').remove();
     $('.table-content div').remove();
-    $('#count').html("Pending search results...");
     $('#author2').mouseover(function(){
       $('.modal-author2-hint').slideDown('slow');
     }).mouseout(function(){
@@ -308,6 +305,8 @@
     $('.content div').remove();
     $('.table-content div').remove();
     $('#count').html("Pending search results...");
+    $("#reviews").hide();
+    $('#best-search').show();
     $('#author').mouseover(function(){
       $('.modal-author-hint').slideDown('slow');
     }).mouseout(function(){
