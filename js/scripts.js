@@ -23,7 +23,7 @@
   $('#over').on('click', function () {
     // remove resultset if this has already been run
     $('.content div').remove();
-    $('.table-content tr).remove();
+    $('.table-content tr').remove();
     $('#count').html("Pending search results...");
     var url = "https://api.nytimes.com/svc/books/v3/lists/overview.jsonp?callback=foobar";
     url += '&' + $.param({
