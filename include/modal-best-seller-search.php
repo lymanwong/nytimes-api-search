@@ -1,4 +1,5 @@
-<div class="modal-body" id="best-search">
+<span id="best-search">
+<div class="modal-body">
   <form id="contact">
     <div class="form-group">
       <label for="author" class="control-label">Author:</label><span class="glyphicon glyphicon-question-sign" aria-hidden="true" id="author"></span>
@@ -32,3 +33,9 @@
     </span>
   </form>
 </div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  <button type="button" class="btn btn-primary" id="best-seller-submit">Submit</button>
+</div>
+</span>

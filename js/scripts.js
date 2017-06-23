@@ -263,6 +263,20 @@
     $("#reviews").show();
     $('.content div').remove();
     $('.table-content div').remove();
+    $('#author2').mouseover(function(){
+      $('.modal-author2-hint').slideDown('slow');
+    }).mouseout(function(){
+      $('.modal-author2-hint').slideUp('slow');
+    });
+    $('#isbn').mouseover(function(){
+      $('.modal-isbn-hint').slideDown('slow');
+    }).mouseout(function(){
+      $('.modal-isbn-hint').slideUp('slow');
+    });$('#title2').mouseover(function(){
+      $('.modal-title2-hint').slideDown('slow');
+    }).mouseout(function(){
+      $('.modal-title2-hint').slideUp('slow');
+    });
 
     var url = "https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json";
     url += '?' + $.param({
