@@ -1,6 +1,6 @@
 (function ($) {
   //Modal tool tip hide
-  $('.modal-author-hint,.modal-title-hint,.modal-publisher-hint,.modal-contributor-hint').slideUp();
+  $('.modal-author-hint,.modal-title-hint,.modal-publisher-hint,.modal-contributor-hint,.modal-author2-hint,.modal-title2-hint,.modal-isbn-hint').slideUp();
   $("#reviews").hide();
   $("#best-search").hide();
 
@@ -204,42 +204,54 @@
   }); //close #abs click function
 
 //Custom Search Modal - Submit Button
-  $("button#submit").click(function(){
+  $("#best-seller-submit").click(function(){
     $('.content div').remove();
     $('.table-content div').remove();
     var str = $("form").serialize();
-    var url = "https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.jsonp?callback=foobar";
-    url += '?' + $.param({
+    var url = "https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json";
+    url += '?'+ str + '&' + $.param({
       'api-key': "974e184c7cfd4c44904bfee8f625fef5"
-    })+"&"+str;
+    });
 
     // call to API
-    var request = createCORSRequest("GET", url);
-    if (!request) {
-      alert('CORS not supported');
-      return;
-    }
+    // var request = createCORSRequest("GET", url);
+    // if (!request) {
+    //   alert('CORS not supported');
+    //   return;
+    // }
     // Response handlers.
-    request.onload = function(){
-      var f = new Function("foobar", request.responseText);
-      f(function(json){
-      var items = [];
-        $( "#count" ).html("<b style='color:blue;'>"+json.num_results+"</b> books found. ");
-        Object.keys(json).forEach(function(key,value){
+    // request.onload = function(){
+      // var f = new Function("foobar", request.responseText);
+      // f(function(json){
+      $.ajax({
+        url: url,
+        method: 'GET',
+        crossDomain: true,
+      })
+      .done(function(result) {
+        $('#exampleModal').modal('hide');
+        var data = result;
+        var items = [];
+        $( "#count" ).html("<b style='color:blue;'>"+result.num_results+"</b> books found. ");
+        Object.keys(result).forEach(function(key,value){
           if(key == "results"){
-            for(var i = 0; i<json[key].length; i++){
-              var title = (json[key][i].title);
-              var author = (json[key][i].author);
-              var description = (json[key][i].description);
-              var copyright = json.copyright;
+            for(var i = 0; i<result[key].length; i++){
+              var title = (result[key][i].title);
+              var author = (result[key][i].author);
+              var description = (result[key][i].description);
+              var publisher = (result[key][i].publisher);
+              var contributor = (result[key][i].contributor);
+              var copyright = result.copyright;
               items.push(
                 '<div class="col-sm-6 col-md-4">'+
                   '<div class="thumbnail">'+
                     '<img src="img/book.png" alt="...">'+
                     '<div class="caption">'+
-                      '<h5>' + title + '</h5>'+
-                      '<h5>' + author + '</h5>'+
-                      '<p>' + description + '</p>'+
+                    '<h5><b>Title: </b>' + title + '</h5>'+
+                    '<h5><b>Author: </b>' + author + '</h5>'+
+                    '<p><b>Contributor: </b>' + contributor + '</p>'+
+                    '<p><b>Description: </b>' + description + '</p>'+
+                    '<p><b>Publisher: </b>' + publisher + '</p>'+
                     '</div>'+
                   '</div>'+
                 '</div>'
@@ -251,11 +263,11 @@
           $('.panel-footer').html(copyright);
         });
       });
-    };
-    request.onerror = function() {
-      alert('Woops, there was an error making the request.');
-    };
-    request.send();
+    // };
+    // request.onerror = function() {
+    //   alert('Woops, there was an error making the request.');
+    // };
+    // request.send();
   }); //close #abs click function
 
   $('#reviews-btn').click(function(){
