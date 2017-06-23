@@ -85,7 +85,6 @@
     request.send();
   });
 
-
   //Best-Seller List - View All Button
   $('#abs').on('click', function () {
     // remove resultset if this has already been run
@@ -144,7 +143,7 @@
       alert('Woops, there was an error making the request.');
     };
     request.send();
-  }); //close #abs click function
+  });
 
 
   //All Category Names - View All
@@ -203,9 +202,9 @@
       alert('Woops, there was an error making the request.');
     };
     request.send();
-  }); //close #abs click function
+  });
 
-//Custom Search Modal - Submit Button
+  //Custom Search Modal - Submit Button
   $("#best-seller-submit").click(function(){
     $('.content div').remove();
     $('.table-content div').remove();
@@ -256,48 +255,6 @@
         $('.panel-footer').html(copyright);
       });
     });
-  }); //close #abs click function
-
-  $('#reviews-btn').click(function(){
-    $('#best-search').hide();
-    $("#reviews").show();
-    $('.content div').remove();
-    $('.table-content div').remove();
-    $('#author2').mouseover(function(){
-      $('.modal-author2-hint').slideDown('slow');
-    }).mouseout(function(){
-      $('.modal-author2-hint').slideUp('slow');
-    });
-    $('#isbn').mouseover(function(){
-      $('.modal-isbn-hint').slideDown('slow');
-    }).mouseout(function(){
-      $('.modal-isbn-hint').slideUp('slow');
-    });$('#title2').mouseover(function(){
-      $('.modal-title2-hint').slideDown('slow');
-    }).mouseout(function(){
-      $('.modal-title2-hint').slideUp('slow');
-    });
-
-    var url = "https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json";
-    url += '?' + $.param({
-    // Note: normally the key would be hidden
-    'api-key': "974e184c7cfd4c44904bfee8f625fef5"
-    })
-    $.ajax({
-         url: "http://api.nytimes.com/svc/books/v3/lists/overview.jsonp?callback=foobar&api-key=974e184c7cfd4c44904bfee8f625fef5",
-         type: "GET",
-         crossDomain: true,
-         // data: JSON.stringify(somejson),
-         dataType: "jsonp",
-         success: function (response) {
-             // var resp = JSON.parse(response)
-             // alert(resp.status);
-             console.log(response);
-         },
-         error: function (xhr, status) {
-             alert("error");
-         }
-     });
   });
 
   //Best-Seller Custom Search Button > Modal > tool tip
@@ -327,6 +284,90 @@
     }).mouseout(function(){
       $('.modal-publisher-hint').slideUp('slow');
     });
+  });
+
+  //Reviews search button action
+  $('#reviews-btn').click(function(){
+    $('#best-search').hide();
+    $("#reviews").show();
+    $('.content div').remove();
+    $('.table-content div').remove();
+    $('#author2').mouseover(function(){
+      $('.modal-author2-hint').slideDown('slow');
+    }).mouseout(function(){
+      $('.modal-author2-hint').slideUp('slow');
+    });
+    $('#isbn').mouseover(function(){
+      $('.modal-isbn-hint').slideDown('slow');
+    }).mouseout(function(){
+      $('.modal-isbn-hint').slideUp('slow');
+    });$('#title2').mouseover(function(){
+      $('.modal-title2-hint').slideDown('slow');
+    }).mouseout(function(){
+      $('.modal-title2-hint').slideUp('slow');
+    });
+  });
+
+  //Reviews submit button action
+  $("#review-submit-btn").click(function(){
+    $('.content div').remove();
+    $('.table-content div').remove();
+    $('#count').html("Pending search results...");
+    var str = $("form input").filter(function () {
+        return !!this.value;
+    }).serialize();
+    var url = "https://api.nytimes.com/svc/books/v3/reviews.jsonp?callback=foobar";
+    url += '&' + str + '&' + $.param({
+    // Note: normally the key would be hidden
+    'api-key': "974e184c7cfd4c44904bfee8f625fef5"
+    })
+    var request = createCORSRequest("GET", url);
+    if (!request) {
+      alert('CORS not supported');
+      return;
+    }
+    request.onload = function(){
+      $('#exampleModal').modal('hide');
+      var f = new Function("foobar", request.responseText);
+      f(function(json){
+        var items = [];
+        $( "#count" ).html("<b style='color:blue;'>"+json.num_results+"</b> reviews found. ");
+        Object.keys(json).forEach(function(key,value){
+          if(key == "results"){
+            for(var i = 0; i<json[key].length; i++){
+              var title = (json[key][i].book_title);
+              var author = (json[key][i].book_author);
+              var pub_date = (json[key][i].publication_dt);
+              var byline = (json[key][i].byline);
+              var isbn = (json[key][i].isbn13[0]);
+              var url = (json[key][i].url);
+              var copyright = json.copyright;
+              items.push(
+                '<div class="col-sm-6 col-md-4">'+
+                  '<a href="'+ url +'" target="_blank"><div class="thumbnail">'+
+                    '<img src="img/book.png" alt="...">'+
+                    '<div class="caption">'+
+                      '<h5><b>Title: </b>' + title + '</h5>'+
+                      '<h5><b>Author: </b>' + author + '</h5>'+
+                      '<p><b>Description: </b>' + pub_date + '</p>'+
+                      '<p><b>Publisher: </b>' + byline + '</p>'+
+                      '<p><b>Contributor: </b>' + isbn + '</p>'+
+                    '</div>'+
+                  '</div></a>'+
+                '</div>'
+              );
+            }
+            $ul = $('<div class="row" />').appendTo('.content');
+            $ul.append(items);
+            }
+            $('.panel-footer').html(copyright);
+          });
+        });
+      };
+      request.onerror = function() {
+        alert('Woops, there was an error making the request.');
+      };
+    request.send();
   });
 
   //Reset text if search is cancelled
