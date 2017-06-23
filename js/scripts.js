@@ -207,67 +207,52 @@
   $("#best-seller-submit").click(function(){
     $('.content div').remove();
     $('.table-content div').remove();
-    var str = $("form").serialize();
+    var str = $("form input").filter(function () {
+        return !!this.value;
     var url = "https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json";
     url += '?'+ str + '&' + $.param({
       'api-key': "974e184c7cfd4c44904bfee8f625fef5"
     });
-
-    // call to API
-    // var request = createCORSRequest("GET", url);
-    // if (!request) {
-    //   alert('CORS not supported');
-    //   return;
-    // }
-    // Response handlers.
-    // request.onload = function(){
-      // var f = new Function("foobar", request.responseText);
-      // f(function(json){
-      $.ajax({
-        url: url,
-        method: 'GET',
-        crossDomain: true,
-      })
-      .done(function(result) {
-        $('#exampleModal').modal('hide');
-        var data = result;
-        var items = [];
-        $( "#count" ).html("<b style='color:blue;'>"+result.num_results+"</b> books found. ");
-        Object.keys(result).forEach(function(key,value){
-          if(key == "results"){
-            for(var i = 0; i<result[key].length; i++){
-              var title = (result[key][i].title);
-              var author = (result[key][i].author);
-              var description = (result[key][i].description);
-              var publisher = (result[key][i].publisher);
-              var contributor = (result[key][i].contributor);
-              var copyright = result.copyright;
-              items.push(
-                '<div class="col-sm-6 col-md-4">'+
-                  '<div class="thumbnail">'+
-                    '<img src="img/book.png" alt="...">'+
-                    '<div class="caption">'+
-                    '<h5><b>Title: </b>' + title + '</h5>'+
-                    '<h5><b>Author: </b>' + author + '</h5>'+
-                    '<p><b>Contributor: </b>' + contributor + '</p>'+
-                    '<p><b>Description: </b>' + description + '</p>'+
-                    '<p><b>Publisher: </b>' + publisher + '</p>'+
-                    '</div>'+
+    $.ajax({
+      url: url,
+      method: 'GET',
+      crossDomain: true,
+    })
+    .done(function(result) {
+      $('#exampleModal').modal('hide');
+      var data = result;
+      var items = [];
+      $( "#count" ).html("<b style='color:blue;'>"+result.num_results+"</b> books found. ");
+      Object.keys(result).forEach(function(key,value){
+        if(key == "results"){
+          for(var i = 0; i<result[key].length; i++){
+            var title = (result[key][i].title);
+            var author = (result[key][i].author);
+            var description = (result[key][i].description);
+            var publisher = (result[key][i].publisher);
+            var contributor = (result[key][i].contributor);
+            var copyright = result.copyright;
+            items.push(
+              '<div class="col-sm-6 col-md-4">'+
+                '<div class="thumbnail">'+
+                  '<img src="img/book.png" alt="...">'+
+                  '<div class="caption">'+
+                  '<h5><b>Title: </b>' + title + '</h5>'+
+                  '<h5><b>Author: </b>' + author + '</h5>'+
+                  '<p><b>Contributor: </b>' + contributor + '</p>'+
+                  '<p><b>Description: </b>' + description + '</p>'+
+                  '<p><b>Publisher: </b>' + publisher + '</p>'+
                   '</div>'+
-                '</div>'
-              );
-            }
-          $ul = $('<div class="row" />').appendTo('.content');
-          $ul.append(items);
+                '</div>'+
+              '</div>'
+            );
           }
-          $('.panel-footer').html(copyright);
-        });
+        $ul = $('<div class="row" />').appendTo('.content');
+        $ul.append(items);
+        }
+        $('.panel-footer').html(copyright);
       });
-    // };
-    // request.onerror = function() {
-    //   alert('Woops, there was an error making the request.');
-    // };
-    // request.send();
+    });
   }); //close #abs click function
 
   $('#reviews-btn').click(function(){
