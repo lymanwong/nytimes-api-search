@@ -41,7 +41,7 @@ body {
   transition: top ease .6s !important; }
 
 .thumbnail > img {
-  max-width: 50% !important; }
+  max-width: 30% !important; }
 
 .thumbnail .overimg {
   max-width: 25% !important; }

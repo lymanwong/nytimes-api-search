@@ -323,4 +323,9 @@
       $('.modal-publisher-hint').slideUp('slow');
     });
   });
+
+  //Reset text if search is cancelled
+  $("#dismiss-reviews, #dismiss-search").click(function(){
+    $("#count").html("Start your search by clicking a button above");
+  });
 }(jQuery));
