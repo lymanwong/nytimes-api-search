@@ -21,9 +21,10 @@
 
   //Top 5 A-C Button
   $('#over').on('click', function () {
-      // remove resultset if this has already been run
+    // remove resultset if this has already been run
     $('.content div').remove();
     $('.table-content div').remove();
+    $('#count').html("Pending search results...");
     var url = "https://api.nytimes.com/svc/books/v3/lists/overview.jsonp?callback=foobar";
     url += '&' + $.param({
       'api-key': "974e184c7cfd4c44904bfee8f625fef5"
@@ -90,6 +91,7 @@
     // remove resultset if this has already been run
     $('.content div').remove();
     $('.table-content div').remove();
+    $('#count').html("Pending search results...");
     var url = "https://api.nytimes.com/svc/books/v3/lists.jsonp?callback=foobar";
     url += '?' + $.param({
       'api-key': "974e184c7cfd4c44904bfee8f625fef5"
@@ -150,6 +152,7 @@
     // remove resultset if this has already been run
     $('.content div').remove();
     $('.table-content div').remove();
+    $('#count').html("Pending search results...");
     var url = "https://api.nytimes.com/svc/books/v3/lists/names.jsonp?callback=foobar";
     url += '&' + $.param({
       'api-key': "974e184c7cfd4c44904bfee8f625fef5"
@@ -207,6 +210,7 @@
   $("#best-seller-submit").click(function(){
     $('.content div').remove();
     $('.table-content div').remove();
+    $('#count').html("Pending search results...");
     var str = $("form input").filter(function () {
         return !!this.value;
     }).serialize();
@@ -261,6 +265,7 @@
     $("#reviews").show();
     $('.content div').remove();
     $('.table-content div').remove();
+    $('#count').html("Pending search results...");
     $('#author2').mouseover(function(){
       $('.modal-author2-hint').slideDown('slow');
     }).mouseout(function(){
@@ -300,8 +305,9 @@
 
   //Best-Seller Custom Search Button > Modal > tool tip
   $('#best-search-btn').click(function(){
-    $("#reviews").hide();
-    $('#best-search').show();
+    $('.content div').remove();
+    $('.table-content div').remove();
+    $('#count').html("Pending search results...");
     $('#author').mouseover(function(){
       $('.modal-author-hint').slideDown('slow');
     }).mouseout(function(){
