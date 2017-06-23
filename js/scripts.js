@@ -23,7 +23,7 @@
   $('#over').on('click', function () {
     // remove resultset if this has already been run
     $('.content div').remove();
-    $('.table-content div').remove();
+    $('.table-content tr).remove();
     $('#count').html("Pending search results...");
     var url = "https://api.nytimes.com/svc/books/v3/lists/overview.jsonp?callback=foobar";
     url += '&' + $.param({
@@ -89,7 +89,7 @@
   $('#abs').on('click', function () {
     // remove resultset if this has already been run
     $('.content div').remove();
-    $('.table-content div').remove();
+    $('.table-content tr').remove();
     $('#count').html("Pending search results...");
     var url = "https://api.nytimes.com/svc/books/v3/lists.jsonp?callback=foobar";
     url += '?' + $.param({
@@ -150,7 +150,7 @@
   $('#names').on('click', function () {
     // remove resultset if this has already been run
     $('.content div').remove();
-    $('.table-content div').remove();
+    $('.table-content tr').remove();
     var url = "https://api.nytimes.com/svc/books/v3/lists/names.jsonp?callback=foobar";
     url += '&' + $.param({
       'api-key': "974e184c7cfd4c44904bfee8f625fef5"
@@ -207,7 +207,7 @@
   //Custom Search Modal - Submit Button
   $("#best-seller-submit").click(function(){
     $('.content div').remove();
-    $('.table-content div').remove();
+    $('.table-content tr').remove();
     $('#count').html("Pending search results...");
     var str = $("form input").filter(function () {
         return !!this.value;
@@ -260,7 +260,7 @@
   //Best-Seller Custom Search Button > Modal > tool tip
   $('#best-search-btn').click(function(){
     $('.content div').remove();
-    $('.table-content div').remove();
+    $('.table-content tr').remove();
     $('#count').html("Pending search results...");
     $("#reviews").hide();
     $('#best-search').show();
@@ -292,7 +292,7 @@
     $('#best-search').hide();
     $("#reviews").show();
     $('.content div').remove();
-    $('.table-content div').remove();
+    $('.table-content tr').remove();
     $('#author2').mouseover(function(){
       $('.modal-author2-hint').slideDown('slow');
     }).mouseout(function(){
@@ -312,7 +312,7 @@
   //Reviews submit button action
   $("#review-submit-btn").click(function(){
     $('.content div').remove();
-    $('.table-content div').remove();
+    $('.table-content tr').remove();
     $('#count').html("Pending search results...");
     var str = $("form input").filter(function () {
         return !!this.value;
